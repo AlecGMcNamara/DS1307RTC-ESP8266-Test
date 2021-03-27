@@ -63,42 +63,43 @@ void displayTime(){
   }
   Serial.print(second, DEC);
   Serial.print(" ");
+  switch(dayOfWeek){
+  case 1:
+    Serial.print("Sunday ");
+    break;
+  case 2:
+    Serial.print("Monday ");
+    break;
+  case 3:
+    Serial.print("Tuesday ");
+    break;
+  case 4:
+    Serial.print("Wednesday ");
+    break;
+  case 5:
+    Serial.print("Thursday ");
+    break;
+  case 6:
+    Serial.print("Friday ");
+    break;
+  case 7:
+    Serial.print("Saturday ");
+    break;
+  }
   Serial.print(dayOfMonth, DEC);
   Serial.print("/");
   Serial.print(month, DEC);
   Serial.print("/");
-  Serial.print(year, DEC);
-  Serial.print(" Day of week: ");
-  switch(dayOfWeek){
-  case 1:
-    Serial.println("Sunday");
-    break;
-  case 2:
-    Serial.println("Monday");
-    break;
-  case 3:
-    Serial.println("Tuesday");
-    break;
-  case 4:
-    Serial.println("Wednesday");
-    break;
-  case 5:
-    Serial.println("Thursday");
-    break;
-  case 6:
-    Serial.println("Friday");
-    break;
-  case 7:
-    Serial.println("Saturday");
-    break;
-  }
+  Serial.println(year, DEC);
+  
 }
 void setup(){
   Wire.begin();
   Serial.begin(115200);
+  Serial.println();
   // set the initial time here:
   // DS3231 seconds, minutes, hours, day, date, month, year
-  setDS3231time(0,25,18,3,31,02,21);
+  //setDS3231time(0,55,16,7,27,03,21);
 }
 void loop(){
   displayTime(); // display the real-time clock data on the Serial Monitor,
